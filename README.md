@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/prisma-query-inspector.svg)](https://badge.fury.io/js/prisma-query-inspector)
 # Prisma Query Inspector
 
 Prisma 2 tool to inspect all queries going to the database, formatted and with all params if any
