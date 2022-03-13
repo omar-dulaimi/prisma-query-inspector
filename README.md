@@ -2,6 +2,7 @@
 [![npm](https://img.shields.io/npm/dt/prisma-query-inspector.svg)](https://www.npmjs.com/package/prisma-query-inspector) 
 [![npm](https://img.shields.io/npm/l/prisma-query-inspector.svg)](LICENSE)
 
+
 # Prisma Query Inspector
 
 Prisma 2 tool to inspect all queries going to the database, formatted and with all params if any
