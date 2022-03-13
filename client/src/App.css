@@ -1,0 +1,46 @@
+blockquote {
+  margin: 0;
+}
+
+blockquote pre,
+blockquote p {
+  padding: 15px;
+  background: #eee;
+  border-radius: 5px;
+}
+
+.main {
+  width: 1170px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  height: calc(100vh - 49px);
+}
+
+.logs {
+  width: 85%;
+  overflow-y: scroll;
+}
+
+.details {
+  width: inherit;
+  overflow-y: scroll;
+}
+
+.logs > .message {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #6042e6;
+  padding: 8px;
+}
+
+.logs > .message:hover {
+  color: #000000;
+  background-color: #43b6daaf;
+}
+
+.selected {
+  color: #000000 !important;
+  background-color: #93e97f !important;
+}
