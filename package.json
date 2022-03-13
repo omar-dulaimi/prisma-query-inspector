@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Prisma 2 tool to inspect all queries going to the database, formatted and with all params if any.",
   "main": "dist/server/app.js",
+  "repository": "https://github.com/omar-dulaimi/prisma-query-inspector",
   "scripts": {
     "start": "NODE_ENV=production node dist/server/app.js",
     "dev": "npm run build-client && ts-node-dev --respawn --transpile-only server/app.ts",
