@@ -2,14 +2,13 @@
   "name": "prisma-query-inspector",
   "version": "1.0.5",
   "description": "Prisma 2 tool to inspect all queries going to the database, formatted and with all params if any.",
-  "main": "dist/server/index.js",
+  "main": "dist/main/index.js",
   "repository": "https://github.com/omar-dulaimi/prisma-query-inspector",
+  "bin": "dist/main/bin.js",
   "scripts": {
-    "start": "NODE_ENV=production node dist/server/app.js",
-    "dev": "npm run build-client && ts-node-dev --respawn --transpile-only server/app.ts",
-    "build": "npm run build-client && npm run build-server",
+    "build": "npm run build-client && npm run build-main",
     "build-client": "cd client && npm run build",
-    "build-server": "cd server && tsc",
+    "build-main": "cd main && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Omar Dulaimi",
@@ -29,6 +28,8 @@
     "boxen": "^4.0.0",
     "chalk": "^4.1.0",
     "express": "^4.17.3",
+    "kleur": "^4.1.4",
+    "meow": "^9.0.0",
     "socket.io": "^4.4.1",
     "typescript": "^4.6.2",
     "uuid": "^8.3.2"

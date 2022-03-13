@@ -8,9 +8,9 @@
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
-    "outDir": "dist/server",
+    "outDir": "dist/main",
     "baseUrl": ".",
-    "typeRoots": ["./server/types.ts"]
+    "typeRoots": ["main/types.ts"]
   },
-  "include": ["server/*"]
+  "include": ["main/*"]
 }

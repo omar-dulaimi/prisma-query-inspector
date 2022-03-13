@@ -8,7 +8,7 @@ import NoMessages from "./components/NoMessages/NoMessages.lazy";
 import { MessageType } from "./types";
 import { safeArrayParse } from "./utils";
 import "./App.css";
-const ENDPOINT = "http://127.0.0.1:4001";
+const ENDPOINT = "http://127.0.0.1:5858";
 
 function App() {
   const [messages, setMessages] = useState<MessageType[]>([]);
