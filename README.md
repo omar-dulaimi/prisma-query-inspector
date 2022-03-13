@@ -1,5 +1,6 @@
 [![npm version](https://badge.fury.io/js/prisma-query-inspector.svg)](https://badge.fury.io/js/prisma-query-inspector)
 [![npm](https://img.shields.io/npm/dt/prisma-query-inspector.svg)](https://www.npmjs.com/package/prisma-query-inspector) 
+[![HitCount](https://hits.dwyl.com/omar-dulaimi/prisma-query-inspector.svg?style=flat)](http://hits.dwyl.com/omar-dulaimi/prisma-query-inspector)
 [![npm](https://img.shields.io/npm/l/prisma-query-inspector.svg)](LICENSE)
 
 
