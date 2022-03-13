@@ -54,7 +54,7 @@ prisma.$on("query", queryHandler);
 <br>
 
 ```js
-"inspect-queries": "prisma-query-inspector"
+"inspect-queries": "cd node_modules/prisma-query-inspector && npm start"
 ```
 <br>
 
