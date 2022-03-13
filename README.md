@@ -1,7 +1,6 @@
 [![npm version](https://badge.fury.io/js/prisma-query-inspector.svg)](https://badge.fury.io/js/prisma-query-inspector)
 [![npm](https://img.shields.io/npm/dt/prisma-query-inspector.svg)](https://www.npmjs.com/package/prisma-query-inspector) 
 [![npm](https://img.shields.io/npm/l/prisma-query-inspector.svg)](LICENSE)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 # Prisma Query Inspector
 
