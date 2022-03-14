@@ -7,6 +7,10 @@
 # Prisma Query Inspector
 
 Prisma 2 tool to inspect all queries going to the database, formatted and with all params if any
+<br />
+<br />
+![prisma-query-inspector](https://user-images.githubusercontent.com/11743389/158146058-ce4f103c-4a27-470d-82f6-d8d94f9a5133.png)
+
 
 # Todo List
 - [x] MySQL support
