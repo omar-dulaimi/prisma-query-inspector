@@ -59,8 +59,10 @@ const prisma = new PrismaClient({
 <br>
 
 ```js
-import { queryHandler } from "prisma-query-inspector";
-prisma.$on("query", queryHandler);
+import { queryHandler, configure } from "prisma-query-inspector";
+configure({ language: { name: "mysql" } }).then(() => {
+  prisma.$on("query", queryHandler);
+});
 ```
 
 ### 3- Add a new npm script in `package.json` to run the server
