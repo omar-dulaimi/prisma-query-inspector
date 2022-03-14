@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
     socket.on("message", (message: MessageType) => {
-      messages.push(message);
+      messages.unshift(message);
       setMessages([...messages]);
     });
 
