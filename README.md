@@ -1,8 +1,7 @@
 [![npm version](https://badge.fury.io/js/prisma-query-inspector.svg)](https://badge.fury.io/js/prisma-query-inspector)
-[![npm](https://img.shields.io/npm/dt/prisma-query-inspector.svg)](https://www.npmjs.com/package/prisma-query-inspector) 
+[![npm](https://img.shields.io/npm/dt/prisma-query-inspector.svg)](https://www.npmjs.com/package/prisma-query-inspector)
 [![HitCount](https://hits.dwyl.com/omar-dulaimi/prisma-query-inspector.svg?style=flat)](http://hits.dwyl.com/omar-dulaimi/prisma-query-inspector)
 [![npm](https://img.shields.io/npm/l/prisma-query-inspector.svg)](LICENSE)
-
 
 # Prisma Query Inspector
 
@@ -11,8 +10,8 @@ Prisma 2 tool to inspect all queries going to the database, formatted and with a
 <br />
 ![prisma-query-inspector](https://user-images.githubusercontent.com/11743389/158146058-ce4f103c-4a27-470d-82f6-d8d94f9a5133.png)
 
-
 # Todo List
+
 - [x] MySQL support
 - [x] PostgreSQL support
 - [x] MariaDB support
@@ -42,6 +41,7 @@ $ yarn add prisma-query-inspector --dev
 # Usage
 
 ### 1- Enable Prisma query logs
+
 <br>
 
 ```js
@@ -56,6 +56,7 @@ const prisma = new PrismaClient({
 ```
 
 ### 2- Register the query handler
+
 <br>
 
 ```js
@@ -65,13 +66,18 @@ configure({ language: { name: "mysql" } }).then(() => {
 });
 ```
 
-### 3- Add a new npm script in `package.json` to run the server
+### 3- Add a new npm script in `package.json`
+
 <br>
 
 ```js
 "inspect-queries": "prisma-query-inspector start"
 ```
+
+<br>
+
+### 4- Run your project first, then run the inspector
+
 <br>
 
 ### You're done!
-
