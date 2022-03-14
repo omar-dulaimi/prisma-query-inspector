@@ -1,34 +1,38 @@
 import axios from "axios";
 import * as uuid from "uuid";
-import chalk from "chalk";
-import { QueryEventType } from "./types";
+import { promises as fs } from "fs";
+import { QueryEventType, MainOptionsType } from "./types";
+import path from "path";
+
+export const configure: (options?: MainOptionsType) => Promise<void> = async (
+  options = { language: { name: "sql" } }
+) => {
+  if (options?.language?.name === "sql") return;
+  await fs.writeFile(
+    path.join(__dirname, "config.json"),
+    JSON.stringify(options)
+  );
+};
 
 export const queryHandler = async (e: QueryEventType) => {
-  let isReachable = false;
+  const PORT = 5858;
+  let isReachable;
   try {
     const response = await axios({
       method: "GET",
-      url: "http://localhost:5858",
+      url: `http://localhost:${PORT}`,
     });
     isReachable = response.status >= 200 && response.status < 300;
   } catch (error) {
-    console.log(error?.message);
+    isReachable = false;
   }
 
   if (!isReachable) {
-    console.log(
-      chalk.red(`
-    Prisma Query Server is unreachable!
-    Please make sure to run it from package.json scripts ${chalk.underline.green(
-      "before"
-    )} you run your project
-    `)
-    );
     return;
   }
   await axios({
     method: "POST",
-    url: "http://localhost:5858/message",
+    url: `http://localhost:${PORT}/message`,
     data: {
       id: uuid.v4(),
       ...e,

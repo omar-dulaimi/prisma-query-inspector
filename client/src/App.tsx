@@ -5,7 +5,7 @@ import Header from "./components/Header/Header.lazy";
 import Message from "./components/Message/Message.lazy";
 import MessageDetails from "./components/MessageDetails/MessageDetails.lazy";
 import NoMessages from "./components/NoMessages/NoMessages.lazy";
-import { MessageType } from "./types";
+import { MainOptionsType, MessageType } from "./types";
 import { safeArrayParse } from "./utils";
 import "./App.css";
 const ENDPOINT = "http://127.0.0.1:5858";
@@ -17,24 +17,35 @@ function App() {
   );
   const [params, setParams] = useState<MessageType>({});
   const [formattedQuery, setFormattedQuery] = useState<string>("");
+  const [config, setConfig] = useState<MainOptionsType | null>(null);
 
   useEffect(() => {
-    const socket = socketIOClient(ENDPOINT);
-    socket.on("message", (message: MessageType) => {
-      messages.unshift(message);
-      setMessages([...messages]);
-    });
+    if (!config) {
+      fetch(`${ENDPOINT}/config`)
+        .then((res) => res.json())
+        .then((result) => {
+          setConfig(result);
+        });
+    }
 
-    return () => {
-      socket.disconnect();
-    };
+    if (config) {
+      const socket = socketIOClient(ENDPOINT);
+      socket.on("message", (message: MessageType) => {
+        messages.unshift(message);
+        setMessages([...messages]);
+      });
+      return () => {
+        socket.disconnect();
+      };
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [config]);
 
   useEffect(() => {
     if (!selectedMessage) return;
     const formatted: string = format(selectedMessage.query, {
-      language: "mysql",
+      language: config?.language?.name ?? "sql",
       uppercase: true,
     });
     setFormattedQuery(formatted);
@@ -45,7 +56,7 @@ function App() {
         return result;
       }, {}) ?? {};
     setParams(reduced);
-  }, [selectedMessage]);
+  }, [selectedMessage, config]);
 
   return (
     <>

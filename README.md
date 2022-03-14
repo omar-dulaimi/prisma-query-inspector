@@ -14,12 +14,11 @@ Prisma 2 tool to inspect all queries going to the database, formatted and with a
 
 # Todo List
 - [x] MySQL support
+- [x] PostgreSQL support
+- [x] MariaDB support
+- [x] SQLite support
+- [x] Standard SQL support
 - [ ] Make UI responsive
-- [ ] PostgreSQL support
-- [ ] MariaDB support
-- [ ] SQLite support
-- [ ] Microsoft SQL Server
-- [ ] Azure SQL	support
 
 ## Table of Contents
 

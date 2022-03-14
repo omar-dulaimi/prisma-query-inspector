@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
+    "resolveJsonModule": true,
     "outDir": "dist/main",
     "baseUrl": ".",
     "typeRoots": ["main/types.ts"]

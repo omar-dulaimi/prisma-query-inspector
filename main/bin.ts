@@ -7,6 +7,7 @@ import http from "http";
 import path from "path";
 import chalk from "chalk";
 import boxen from "boxen";
+import CONFIG from "../main/config.json";
 import { MessageType } from "./types";
 
 const PORT = 5858;
@@ -75,6 +76,10 @@ async function execute<T extends meow.AnyFlags>(cli: meow.Result<T>) {
         res.json({ success: false });
       });
 
+      app.get("/config", (req, res) => {
+        res.json(CONFIG);
+      });
+
       const server = http.createServer(app);
 
       const io = new SocketIO.Server(server, {
@@ -93,7 +98,7 @@ async function execute<T extends meow.AnyFlags>(cli: meow.Result<T>) {
           boxen(
             chalk`
 Prisma Query Inspector Server listing on port: ${chalk.greenBright(PORT)}
-You can access the client here: ${chalk.green("http://localhost:" + PORT)}
+You can access the client here: ${chalk.green("http://127.0.0.1:" + PORT)}
 `,
             { padding: 1, borderColor: "blue" }
           )
