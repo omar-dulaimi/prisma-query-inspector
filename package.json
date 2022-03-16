@@ -1,6 +1,6 @@
 {
   "name": "prisma-query-inspector",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Prisma 2 tool to inspect all queries going to the database, formatted and with all params if any.",
   "main": "dist/main/index.js",
   "repository": "https://github.com/omar-dulaimi/prisma-query-inspector",
@@ -8,7 +8,7 @@
   "scripts": {
     "build": "npm run build-client && npm run build-main",
     "build-client": "cd client && npm run build",
-    "build-main": "cd main && tsc",
+    "build-main": "cd main && tsc && cp config.json ../dist",
     "release": "npm run build && npm publish"
   },
   "author": "Omar Dulaimi",
