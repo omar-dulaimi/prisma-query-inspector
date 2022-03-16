@@ -8,7 +8,6 @@ import NoMessages from "./components/NoMessages/NoMessages.lazy";
 import { MainOptionsType, MessageType } from "./types";
 import { safeArrayParse } from "./utils";
 import "./App.css";
-const ENDPOINT = "http://127.0.0.1:5858";
 
 function App() {
   const [messages, setMessages] = useState<MessageType[]>([]);
@@ -21,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (!config) {
-      fetch(`${ENDPOINT}/config`)
+      fetch(`/config`)
         .then((res) => res.json())
         .then((result) => {
           setConfig(result);
@@ -29,7 +28,7 @@ function App() {
     }
 
     if (config) {
-      const socket = socketIOClient(ENDPOINT);
+      const socket = socketIOClient("/");
       socket.on("message", (message: MessageType) => {
         messages.unshift(message);
         setMessages([...messages]);
@@ -45,7 +44,18 @@ function App() {
   useEffect(() => {
     if (!selectedMessage) return;
     const formatted: string = format(selectedMessage.query, {
-      language: config?.language?.name ?? "sql",
+      language: (config?.language?.name ?? "sql") as
+        | "sql"
+        | "db2"
+        | "mariadb"
+        | "mysql"
+        | "n1ql"
+        | "plsql"
+        | "postgresql"
+        | "redshift"
+        | "spark"
+        | "tsql"
+        | undefined,
       uppercase: true,
     });
     setFormattedQuery(formatted);

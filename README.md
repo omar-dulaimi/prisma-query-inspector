@@ -42,8 +42,6 @@ $ yarn add prisma-query-inspector --dev
 
 ### 1- Enable Prisma query logs
 
-<br>
-
 ```js
 const prisma = new PrismaClient({
   log: [
@@ -54,21 +52,17 @@ const prisma = new PrismaClient({
   ],
 });
 ```
+<br>
 
 ### 2- Register the query handler
 
-<br>
-
 ```js
-import { queryHandler, configure } from "prisma-query-inspector";
-configure({ language: { name: "mysql" } }).then(() => {
-  prisma.$on("query", queryHandler);
-});
+import { queryHandler } from "prisma-query-inspector";
+prisma.$on("query", queryHandler);
 ```
+<br>
 
 ### 3- Add a new npm script in `package.json`
-
-<br>
 
 ```js
 "inspect-queries": "prisma-query-inspector start"
@@ -76,8 +70,27 @@ configure({ language: { name: "mysql" } }).then(() => {
 
 <br>
 
-### 4- Run your project first, then run the inspector
+### 4- Now run it
+
+```bash
+npm run inspect-queries
+```
 
 <br>
 
 ### You're done!
+
+<br>
+<br>
+
+# Available Options
+
+- port: number - inspector server port
+
+  - alias: `p`
+  - default: `7001`
+
+- language: string - database language used to format the queries
+  - alias: `l`
+  - default: `sql`
+  - possible values: `sql` | `mysql` | `mariadb` | `postgresql`

@@ -7,10 +7,8 @@ import http from "http";
 import path from "path";
 import chalk from "chalk";
 import boxen from "boxen";
-import CONFIG from "../main/config.json";
+import { promises as fs } from "fs";
 import { MessageType } from "./types";
-
-const PORT = 5858;
 
 const cli = meow(
   `
@@ -19,10 +17,22 @@ const cli = meow(
     Options
       -v Prints out the version number
       ${kleur.bold("start")}
+      --port -p   Specify the port from which the inspector will be running
+      --language -l Specify the database language to format queries
       
   `,
   {
     flags: {
+      port: {
+        type: "number",
+        alias: "p",
+        default: 7001,
+      },
+      language: {
+        type: "string",
+        alias: "l",
+        default: "sql",
+      },
       version: {
         alias: "v",
       },
@@ -48,11 +58,20 @@ class Connection {
 }
 
 async function execute<T extends meow.AnyFlags>(cli: meow.Result<T>) {
-  const { input } = cli;
+  const {
+    input,
+    flags: { port, language },
+  } = cli;
   if (input.length < 1) {
     console.error(kleur.red("No sub command was specified"));
     cli.showHelp();
   }
+
+  await fs.writeFile(
+    path.join(__dirname, "../config.json"),
+    JSON.stringify({ port, language: { name: language } }),
+    { flag: "w" }
+  );
 
   const mainSubcommand = input[0];
 
@@ -76,6 +95,8 @@ async function execute<T extends meow.AnyFlags>(cli: meow.Result<T>) {
         res.json({ success: false });
       });
 
+      // @ts-ignore
+      const CONFIG = await import("../config.json");
       app.get("/config", (req, res) => {
         res.json(CONFIG);
       });
@@ -93,12 +114,12 @@ async function execute<T extends meow.AnyFlags>(cli: meow.Result<T>) {
         ioConnection = new Connection(io, socket);
       });
 
-      server.listen(PORT, () =>
+      server.listen(port, () =>
         console.log(
           boxen(
             chalk`
-Prisma Query Inspector Server listing on port: ${chalk.greenBright(PORT)}
-You can access the client here: ${chalk.green("http://127.0.0.1:" + PORT)}
+Prisma Query Inspector Server listing on port: ${chalk.greenBright(port)}
+You can access the client here: ${chalk.green("http://127.0.0.1:" + port)}
 `,
             { padding: 1, borderColor: "blue" }
           )

@@ -6,4 +6,5 @@ export type LanguageOptionsType = {
 
 export type MainOptionsType = {
   language: LanguageOptionsType;
+  port: number;
 };
