@@ -70,7 +70,7 @@ prisma.$on("query", queryHandler);
 
 <br>
 
-### 4- Now run it
+### 4- Now run it, then run your project afterwards
 
 ```bash
 npm run inspect-queries
