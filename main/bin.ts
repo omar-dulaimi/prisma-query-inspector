@@ -118,7 +118,7 @@ async function execute<T extends meow.AnyFlags>(cli: meow.Result<T>) {
         console.log(
           boxen(
             chalk`
-Prisma Query Inspector Server listing on port: ${chalk.greenBright(port)}
+Prisma Query Inspector Server listening on port: ${chalk.greenBright(port)}
 You can access the client here: ${chalk.green("http://127.0.0.1:" + port)}
 `,
             { padding: 1, borderColor: "blue" }
