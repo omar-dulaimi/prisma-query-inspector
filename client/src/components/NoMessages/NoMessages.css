@@ -1,9 +1,12 @@
 .no-messages {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  padding: 55px;
-  width: max-content;
-  border: 1px solid gray;
-  transform: translate(-50%, -50%);
+  min-height: 100vh;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.no-messages > blockquote {
+  border: groove;
+  padding: 40px;
 }

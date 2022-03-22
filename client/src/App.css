@@ -1,3 +1,7 @@
+body {
+  min-width: 400px;
+}
+
 blockquote {
   margin: 0;
 }
@@ -9,22 +13,28 @@ blockquote p {
   border-radius: 5px;
 }
 
+blockquote {
+  min-width: 400px;
+}
+
 .main {
-  width: 1170px;
   margin: auto;
   display: flex;
   flex-direction: row;
+  place-content: center;
   overflow: hidden;
   height: calc(100vh - 49px);
 }
 
 .logs {
   width: 85%;
+  max-width: 500px;
+  min-width: 287px;
   overflow-y: scroll;
 }
 
 .details {
-  width: inherit;
+  min-width: 500px;
   overflow-y: scroll;
 }
 
@@ -43,4 +53,24 @@ blockquote p {
 .selected {
   color: #000000 !important;
   background-color: #93e97f !important;
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    height: unset;
+  }
+
+  .logs {
+    width: unset;
+    max-width: unset;
+    min-width: unset;
+  }
+
+  .details {
+    min-width: unset;
+  }
+
+  .message {
+    min-width: 400px;
+  }
 }

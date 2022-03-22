@@ -8,6 +8,11 @@ const Message = (
     message: MessageType;
     selectedMessage: MessageType | null;
     setSelectedMessage: Dispatch<SetStateAction<MessageType | null>>;
+    MessageDetails: React.ReactNode;
+    size: {
+      width: number | undefined;
+      height: number | undefined;
+    };
   }
 ) => (
   <Suspense fallback={null}>

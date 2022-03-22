@@ -17,7 +17,7 @@ Prisma 2 tool to inspect all queries going to the database, formatted and with a
 - [x] MariaDB support
 - [x] SQLite support
 - [x] Standard SQL support
-- [ ] Make UI responsive
+- [x] Make UI responsive
 
 ## Table of Contents
 

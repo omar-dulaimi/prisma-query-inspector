@@ -19,11 +19,3 @@
   font-size: 20px;
   font-weight: bold;
 }
-
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}

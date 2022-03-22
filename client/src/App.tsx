@@ -6,6 +6,7 @@ import Message from "./components/Message/Message.lazy";
 import MessageDetails from "./components/MessageDetails/MessageDetails.lazy";
 import NoMessages from "./components/NoMessages/NoMessages.lazy";
 import { MainOptionsType, MessageType } from "./types";
+import { useWindowSize } from "./utils/hooks";
 import { safeArrayParse } from "./utils";
 import "./App.css";
 
@@ -17,6 +18,7 @@ function App() {
   const [params, setParams] = useState<MessageType>({});
   const [formattedQuery, setFormattedQuery] = useState<string>("");
   const [config, setConfig] = useState<MainOptionsType | null>(null);
+  const size = useWindowSize();
 
   useEffect(() => {
     if (!config) {
@@ -30,6 +32,9 @@ function App() {
     if (config) {
       const socket = socketIOClient("/");
       socket.on("message", (message: MessageType) => {
+        if (!selectedMessage && messages.length > 0) {
+          setSelectedMessage(message);
+        }
         messages.unshift(message);
         setMessages([...messages]);
       });
@@ -84,11 +89,20 @@ function App() {
                     message={item}
                     selectedMessage={selectedMessage}
                     setSelectedMessage={setSelectedMessage}
+                    MessageDetails={
+                      <MessageDetails
+                        key={selectedMessage?.id}
+                        selectedMessage={selectedMessage ?? {}}
+                        formattedQuery={formattedQuery}
+                        params={params}
+                      />
+                    }
+                    size={size}
                   />
                 ))}
               </div>
               <div className="details">
-                {selectedMessage && (
+                {(size.width as number) > 700 && selectedMessage && (
                   <MessageDetails
                     key={selectedMessage.id}
                     selectedMessage={selectedMessage}
