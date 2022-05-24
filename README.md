@@ -10,6 +10,12 @@ Prisma 2 tool to inspect all queries going to the database, formatted and with a
 <br />
 ![prisma-query-inspector](https://user-images.githubusercontent.com/11743389/158146058-ce4f103c-4a27-470d-82f6-d8d94f9a5133.png)
 
+<p align="center">
+  <a href="https://www.buymeacoffee.com/omardulaimi">
+    <img src="https://cdn.buymeacoffee.com/buttons/default-black.png" alt="Buy Me A Coffee" height="41" width="174">
+  </a>
+</p>
+
 # Todo List
 
 - [x] MySQL support
